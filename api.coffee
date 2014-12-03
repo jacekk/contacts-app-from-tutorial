@@ -12,17 +12,17 @@ router
         next()
         return
     .use bodyParser.json()
-    .route '/contacts'
+    .route '/contact'
         .get (req, res)->
-            console.log 'find 1'
+            # req.user.id ==> 1
+            res.json(db('contacts').value())
             # db('contacts').find { userId: parseInt(req.user.id, 10) }, (err, data)->
-            #     res.json(data)
             #     return
             return
         .post (req, res)->
             contact = req.body
             contact.userId = req.user.id
-            console.log 'insert 1'
+            console.log 'post 1'
             # db.insert contact, (err, data)->
             #     res.json(data)
             #     return
@@ -34,15 +34,16 @@ router
         return
     .route '/contact/:id'
         .get (req, res)->
-            gb.findOne req.dbQuery, (err, data)->
-                res.json(data)
-                return
+            console.log 'get 1'
+            # db.findOne req.dbQuery, (err, data)->
+            #     res.json(data)
+            #     return
             return
         .put (req, res)->
             contact = req.body
             delete contact.$promise
             delete contact.$resolved
-            console.log 'update 1'
+            console.log 'put 1'
             # db.update req.dbQuery, contact, (err, data)->
             #     res.json(data[0])
             #     return

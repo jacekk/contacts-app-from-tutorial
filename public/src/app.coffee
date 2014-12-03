@@ -3,7 +3,7 @@
 #         $rootScope.message = 'Hello Angular!'
 #         return
 
-angular.module 'ContactsApp', ['ngRoute']
+angular.module 'ContactsApp', ['ngRoute', 'ngResource']
     .config ($routeProvider, $locationProvider)->
         $routeProvider
             .when('/contacts', {

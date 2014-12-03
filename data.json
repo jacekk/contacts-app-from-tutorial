@@ -1,38 +1,40 @@
-[
-  {
-    "id": 1,
-    "userId": 1,
-    "firstName": [
-      "Tomasz",
-      "text"
-    ],
-    "lastName": [
-      "Kot",
-      "text"
-    ]
-  },
-  {
-    "id": 2,
-    "userId": 2,
-    "firstName": [
-      "Arnold",
-      "text"
-    ],
-    "lastName": [
-      "Czarny",
-      "text"
-    ]
-  },
-  {
-    "id": 3,
-    "userId": 3,
-    "firstName": [
-      "Asia",
-      "text"
-    ],
-    "lastName": [
-      "Frys",
-      "text"
-    ]
-  }
-]
+{
+  "contacts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "firstName": [
+        "Tomasz",
+        "text"
+      ],
+      "lastName": [
+        "Kot",
+        "text"
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "firstName": [
+        "Arnold",
+        "text"
+      ],
+      "lastName": [
+        "Czarny",
+        "text"
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "firstName": [
+        "Asia",
+        "text"
+      ],
+      "lastName": [
+        "Frys",
+        "text"
+      ]
+    }
+  ]
+}
