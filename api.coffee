@@ -1,6 +1,7 @@
 express = require 'express'
 low = require 'lowdb'
 bodyParser = require 'body-parser'
+uuid = require 'uuid'
 
 db = low('data.json')
 router = express.Router()
@@ -14,18 +15,13 @@ router
     .use bodyParser.json()
     .route '/contact'
         .get (req, res)->
-            # req.user.id ==> 1
             res.json(db('contacts').value())
-            # db('contacts').find { userId: parseInt(req.user.id, 10) }, (err, data)->
-            #     return
             return
         .post (req, res)->
             contact = req.body
-            contact.userId = req.user.id
-            console.log 'post 1'
-            # db.insert contact, (err, data)->
-            #     res.json(data)
-            #     return
+            contact.id = uuid()
+            db('contacts').push(contact)
+            res.json(db('contacts').value())
             return
 
 router

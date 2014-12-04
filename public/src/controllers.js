@@ -12,6 +12,9 @@
     $scope.show = function(id) {
       $location.url("/contact/" + id);
     };
+    $scope.go = function(route) {
+      $location.path(route);
+    };
   }).controller('NewController', function($scope, Contact, $location) {
     $scope.contact = new Contact({
       firstName: ['', 'text'],

@@ -1,40 +1,120 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "userId": 1,
       "firstName": [
-        "Tomasz",
+        "a1",
         "text"
       ],
       "lastName": [
-        "Kot",
+        "b1",
         "text"
-      ]
+      ],
+      "email": [
+        "1@op.pl",
+        "email"
+      ],
+      "homePhone": [
+        "",
+        "tel"
+      ],
+      "cellPhone": [
+        "",
+        "tel"
+      ],
+      "birthday": [
+        "2014-12-17T23:00:00.000Z",
+        "date"
+      ],
+      "website": [
+        "",
+        "url"
+      ],
+      "address": [
+        "",
+        "text"
+      ],
+      "id": "f86aa06f-2899-49d7-9f67-e6598d3b6914"
     },
     {
-      "id": 2,
-      "userId": 2,
       "firstName": [
-        "Arnold",
+        "a2",
         "text"
       ],
       "lastName": [
-        "Czarny",
+        "b2",
         "text"
-      ]
+      ],
+      "email": [
+        "",
+        "email"
+      ],
+      "homePhone": [
+        "",
+        "tel"
+      ],
+      "cellPhone": [
+        "",
+        "tel"
+      ],
+      "birthday": [
+        null,
+        "date"
+      ],
+      "website": [
+        "http://www.2222.com",
+        "url"
+      ],
+      "address": [
+        "c2",
+        "text"
+      ],
+      "id": "3c2bb8ca-54ba-4936-a180-bfc4d75633ac"
     },
     {
-      "id": 3,
-      "userId": 3,
       "firstName": [
-        "Asia",
+        "a5",
         "text"
       ],
       "lastName": [
-        "Frys",
+        "b5",
         "text"
-      ]
+      ],
+      "id": "7e5c5917-0884-467c-98f5-85df7b352290"
+    },
+    {
+      "firstName": [
+        "a4",
+        "text"
+      ],
+      "lastName": [
+        "b4",
+        "text"
+      ],
+      "email": [
+        "",
+        "email"
+      ],
+      "homePhone": [
+        "",
+        "tel"
+      ],
+      "cellPhone": [
+        "",
+        "tel"
+      ],
+      "birthday": [
+        "",
+        "date"
+      ],
+      "website": [
+        "",
+        "url"
+      ],
+      "address": [
+        "",
+        "text"
+      ],
+      "id": "768627f5-f648-46f9-b0c0-99bd0ea59624"
     }
   ]
 }
