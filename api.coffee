@@ -25,30 +25,27 @@ router
             return
 
 router
-    .param 'id', (req, res, next)->
-        req.dbQuery = { id: parseInt(req.params.id, 10) }
+    .param 'hash', (req, res, next)->
+        req.dbQuery = {
+            id: req.params.hash
+        }
+        next()
         return
-    .route '/contact/:id'
+    .route '/contact/:hash'
         .get (req, res)->
-            console.log 'get 1'
-            # db.findOne req.dbQuery, (err, data)->
-            #     res.json(data)
-            #     return
+            found = db('contacts').find(req.dbQuery).value()
+            res.json(found)
             return
         .put (req, res)->
             contact = req.body
             delete contact.$promise
             delete contact.$resolved
-            console.log 'put 1'
-            # db.update req.dbQuery, contact, (err, data)->
-            #     res.json(data[0])
-            #     return
+            db('contacts').find(req.dbQuery).assign(contact)
+            res.json(contact)
             return
         .delete (req, res)->
-            console.log 'delete 1'
-            # db.delete req.dbQuery, ->
-            #     res.json(null)
-            #     return
+            db('contacts').remove(req.dbQuery)
+            res.json(null)
             return
 
 module.exports = router

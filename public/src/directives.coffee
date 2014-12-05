@@ -45,3 +45,39 @@ angular.module 'ContactsApp'
                     return
                 return
         }
+    .directive 'newField', ($filter, FieldTypes)->
+        {
+            restrict: 'EA'
+            templateUrl: 'views/new-field.html'
+            replace: true
+            scope: {
+                record: '='
+                live: '@'
+            }
+            require: '^form' # parent element
+            link: ($scope, element, attr, form)->
+                $scope.types = FieldTypes
+                $scope.field = {}
+                $scope.show = (type)->
+                    $scope.field.type = type
+                    $scope.display = true
+                    return
+                $scope.remove = ()->
+                    $scope.field = {}
+                    $scope.display = false
+                    return
+                $scope.add = ()->
+                    if form.newField.$valid
+                        fieldName = $filter('camelCase')($scope.field.name)
+                        $scope.record[fieldName] = [
+                            $scope.field.value
+                            $scope.field.type
+                        ]
+                        $scope.remove()
+                        if $scope.live isnt 'false'
+                            $scope.record.$update (updatedRecord)->
+                                $scope.record = updatedRecord
+                                return
+                    return
+                return
+        }

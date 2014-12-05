@@ -12,9 +12,6 @@
     $scope.show = function(id) {
       $location.url("/contact/" + id);
     };
-    $scope.go = function(route) {
-      $location.path(route);
-    };
   }).controller('NewController', function($scope, Contact, $location) {
     $scope.contact = new Contact({
       firstName: ['', 'text'],
@@ -33,6 +30,14 @@
         $scope.contact.$save();
         $location.url('/contacts');
       }
+    };
+  }).controller('SingleController', function($scope, Contact, $location, $routeParams) {
+    $scope.contact = Contact.get({
+      id: $routeParams.id
+    });
+    $scope.remove = function() {
+      $scope.contact.$delete();
+      $location.url('/contacts');
     };
   });
 

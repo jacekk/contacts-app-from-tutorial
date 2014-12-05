@@ -37,57 +37,11 @@
     },
     {
       "firstName": [
-        "a2",
+        "Color",
         "text"
       ],
       "lastName": [
-        "b2",
-        "text"
-      ],
-      "email": [
-        "",
-        "email"
-      ],
-      "homePhone": [
-        "",
-        "tel"
-      ],
-      "cellPhone": [
-        "",
-        "tel"
-      ],
-      "birthday": [
-        null,
-        "date"
-      ],
-      "website": [
-        "http://www.2222.com",
-        "url"
-      ],
-      "address": [
-        "c2",
-        "text"
-      ],
-      "id": "3c2bb8ca-54ba-4936-a180-bfc4d75633ac"
-    },
-    {
-      "firstName": [
-        "a5",
-        "text"
-      ],
-      "lastName": [
-        "b5",
-        "text"
-      ],
-      "id": "7e5c5917-0884-467c-98f5-85df7b352290"
-    },
-    {
-      "firstName": [
-        "a4",
-        "text"
-      ],
-      "lastName": [
-        "b4",
+        "Guy",
         "text"
       ],
       "email": [
@@ -114,7 +68,34 @@
         "",
         "text"
       ],
-      "id": "768627f5-f648-46f9-b0c0-99bd0ea59624"
+      "myFavouriteColor": [
+        "#8b8400",
+        "color"
+      ],
+      "id": "1a68f7d9-7ee1-4622-8c83-98452180a066",
+      "hobby": [
+        "doing nothing",
+        "text"
+      ]
+    },
+    {
+      "firstName": [
+        "Halle",
+        "text"
+      ],
+      "lastName": [
+        "Berry",
+        "text"
+      ],
+      "justTesting": [
+        "test value 123",
+        "text"
+      ],
+      "blog": [
+        "http://example.com",
+        "url"
+      ],
+      "id": "a13851a2-8aa5-420d-8ef8-b057e7c66919"
     }
   ]
 }

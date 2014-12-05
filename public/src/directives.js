@@ -47,6 +47,42 @@
         };
       }
     };
+  }).directive('newField', function($filter, FieldTypes) {
+    return {
+      restrict: 'EA',
+      templateUrl: 'views/new-field.html',
+      replace: true,
+      scope: {
+        record: '=',
+        live: '@'
+      },
+      require: '^form',
+      link: function($scope, element, attr, form) {
+        $scope.types = FieldTypes;
+        $scope.field = {};
+        $scope.show = function(type) {
+          $scope.field.type = type;
+          $scope.display = true;
+        };
+        $scope.remove = function() {
+          $scope.field = {};
+          $scope.display = false;
+        };
+        $scope.add = function() {
+          var fieldName;
+          if (form.newField.$valid) {
+            fieldName = $filter('camelCase')($scope.field.name);
+            $scope.record[fieldName] = [$scope.field.value, $scope.field.type];
+            $scope.remove();
+            if ($scope.live !== 'false') {
+              $scope.record.$update(function(updatedRecord) {
+                $scope.record = updatedRecord;
+              });
+            }
+          }
+        };
+      }
+    };
   });
 
 }).call(this);
