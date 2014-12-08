@@ -4,7 +4,7 @@
     <form-field record="contact" field="firstName" required="true"></form-field>
     <form-field record="contact" field="lastName" required="true"></form-field>
     <form-field record="contact" field="{{ k }}"
-        ng-repeat="(k, v) in contact | keyFilter: 'firstName' | keyFilter: 'lastName' | keyFilter: 'id' "
+        ng-repeat="(k, v) in contact | keyFilter: 'firstName' | keyFilter: 'lastName' | keyFilter: 'id' | keyFilter: 'userId' "
         ></form-field>
     <new-field record="contact"></new-field>
     <div class="row form-group">

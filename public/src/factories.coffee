@@ -3,5 +3,5 @@ angular.module 'ContactsApp'
         $resource '/api/contact/:id', {
             id: '@id'
         }, {
-            'update': { method: 'PUT' }
+            update: { method: 'PUT' }
         }

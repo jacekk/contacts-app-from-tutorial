@@ -3,31 +3,40 @@ low = require 'lowdb'
 bodyParser = require 'body-parser'
 uuid = require 'uuid'
 
-db = low('data.json')
+db = low('database/data.json')
 router = express.Router()
 
 router
+    .use bodyParser.json()
     .use (req, res, next)->
         if not req.user
-            req.user = { id: 1 }
+            res.json({ error: 'user not set' })
+            return
         next()
         return
-    .use bodyParser.json()
     .route '/contact'
         .get (req, res)->
-            res.json(db('contacts').value())
+            data = db('contacts')
+                .where({ userId: req.user.id })
+                .value()
+            res.json(data)
             return
         .post (req, res)->
             contact = req.body
             contact.id = uuid()
+            contact.userId = req.user.id
             db('contacts').push(contact)
-            res.json(db('contacts').value())
+            res.json({})
             return
+
 
 router
     .param 'hash', (req, res, next)->
+        if not req.user.id or not req.params.hash
+            return
         req.dbQuery = {
             id: req.params.hash
+            userId: req.user.id
         }
         next()
         return

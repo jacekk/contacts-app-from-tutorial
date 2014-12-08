@@ -4,7 +4,7 @@
     return $resource('/api/contact/:id', {
       id: '@id'
     }, {
-      'update': {
+      update: {
         method: 'PUT'
       }
     });

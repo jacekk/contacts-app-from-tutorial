@@ -1,5 +1,6 @@
 angular.module 'ContactsApp'
-    .controller 'ListController', ($scope, Contact, $location)->
+    .controller 'ListController', ($scope, $rootScope, Contact, $location)->
+        $rootScope.PAGE = 'all'
         $scope.contacts = Contact.query()
         $scope.fields = ['firstName', 'lastName']
         $scope.sort = (field)->
@@ -12,7 +13,8 @@ angular.module 'ContactsApp'
             $location.url "/contact/#{id}"
             return
         return
-    .controller 'NewController', ($scope, Contact, $location)->
+    .controller 'NewController', ($scope, $rootScope, Contact, $location, $timeout)->
+        $rootScope.PAGE = 'new'
         $scope.contact = new Contact {
             firstName: ['', 'text']
             lastName: ['', 'text']
@@ -27,16 +29,21 @@ angular.module 'ContactsApp'
             if $scope.newContact.$invalid
                 $scope.$broadcast 'record:invalid'
             else
-                $scope.contact.$save()
-                $location.url '/contacts'
+                $scope.contact.$save { responseType: 'json' }
+                $timeout ()->
+                    $location.url '/contacts'
+                    return
+                , 100
             return
         return
-    .controller 'SingleController', ($scope, Contact, $location, $routeParams)->
+    .controller 'SingleController', ($scope, $rootScope, Contact, $location, $routeParams)->
+        $rootScope.PAGE = 'single'
         $scope.contact = Contact.get {
             id: $routeParams.id
         }
         $scope.remove = ()->
-            $scope.contact.$delete()
-            $location.url '/contacts'
+            $scope.contact.$delete().then (data)->
+                $location.url '/contacts'
+                return
             return
         return

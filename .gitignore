@@ -3,3 +3,4 @@ bower_components
 public/lib
 test
 tests
+database/*.json

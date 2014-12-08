@@ -10,6 +10,8 @@
     }).when('/contact/:id', {
       controller: 'SingleController',
       templateUrl: 'views/single.html'
+    }).otherwise({
+      redirectTo: '/contacts'
     });
     $locationProvider.html5Mode(true);
   });

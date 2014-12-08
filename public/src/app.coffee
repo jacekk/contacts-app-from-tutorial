@@ -13,5 +13,8 @@ angular.module 'ContactsApp', ['ngRoute', 'ngResource', 'ngMessages']
                 controller: 'SingleController'
                 templateUrl: 'views/single.html'
             }
+            .otherwise {
+                redirectTo: '/contacts'
+            }
         $locationProvider.html5Mode(true)
         return
