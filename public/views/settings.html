@@ -1,0 +1,14 @@
+<h2>Settings</h2>
+
+<p>Choose fields to display in the view list:</p>
+
+<div class="checkbox" ng-repeat="field in allFields">
+    <label>
+        <input type="checkbox"
+            value="{{ field }}"
+            ng-checked="{{ fields.indexOf(field) > -1 }}"
+            ng-click="toggle(field)"
+        />
+        {{ field | labelCase }}
+    </label>
+</div>

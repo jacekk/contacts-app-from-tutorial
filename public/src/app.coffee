@@ -13,8 +13,18 @@ angular.module 'ContactsApp', ['ngRoute', 'ngResource', 'ngMessages']
                 controller: 'SingleController'
                 templateUrl: 'views/single.html'
             }
+            .when '/settings', {
+                controller: 'SettingsController'
+                templateUrl: 'views/settings.html'
+            }
             .otherwise {
                 redirectTo: '/contacts'
             }
         $locationProvider.html5Mode(true)
+        return
+    .value 'options', {}
+    .run (options, Fields)->
+        Fields.get().then (res)->
+            options.displayedFields = res.data
+            return
         return

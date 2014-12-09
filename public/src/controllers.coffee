@@ -1,8 +1,8 @@
 angular.module 'ContactsApp'
-    .controller 'ListController', ($scope, $rootScope, Contact, $location)->
+    .controller 'ListController', ($scope, $rootScope, Contact, $location, options)->
         $rootScope.PAGE = 'all'
         $scope.contacts = Contact.query()
-        $scope.fields = ['firstName', 'lastName']
+        $scope.fields = ['firstName', 'lastName'].concat options.displayedFields
         $scope.sort = (field)->
             $scope.sort.field = field
             $scope.sort.order = not $scope.sort.order
@@ -45,5 +45,24 @@ angular.module 'ContactsApp'
             $scope.contact.$delete().then (data)->
                 $location.url '/contacts'
                 return
+            return
+        return
+    .controller 'SettingsController', ($scope, $rootScope, options, Fields)->
+        $rootScope.PAGE = 'settings'
+
+        $scope.allFields = []
+        $scope.fields = options.displayedFields
+
+        Fields.headers().then (data)->
+            $scope.allFields = data
+            return
+
+        $scope.toggle = (field)->
+            index = options.displayedFields.indexOf(field)
+            if index > -1
+                options.displayedFields.splice index, 1
+            else
+                options.displayedFields.push field
+            Fields.set options.displayedFields
             return
         return

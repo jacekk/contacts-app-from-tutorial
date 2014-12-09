@@ -10,10 +10,17 @@
     }).when('/contact/:id', {
       controller: 'SingleController',
       templateUrl: 'views/single.html'
+    }).when('/settings', {
+      controller: 'SettingsController',
+      templateUrl: 'views/settings.html'
     }).otherwise({
       redirectTo: '/contacts'
     });
     $locationProvider.html5Mode(true);
+  }).value('options', {}).run(function(options, Fields) {
+    Fields.get().then(function(res) {
+      options.displayedFields = res.data;
+    });
   });
 
 }).call(this);

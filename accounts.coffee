@@ -63,8 +63,22 @@ router
             req.user = {
                 id: req.session.userId
                 username: data.username
+                options: data.options
             }
         next()
         return
+    .get '/options/displayed-fields', (req, res)->
+        if not req.user
+            res.json []
+        else
+            res.json(req.user.options.displayedFields || [])
+        return
+    .post '/options/displayed-fields', (req, res)->
+        req.user.options.displayedFields = req.body.fields
+        db('users').find({ id: req.user.id }).assign({
+            options: req.user.options
+        })
+        return
+
 
 module.exports = router
